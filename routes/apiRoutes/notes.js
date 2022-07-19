@@ -1,7 +1,9 @@
-const { createNewNote, validateNote, findById, removeItemOnce } = require('../../lib/notes');
+const { createNewNote, validateNote, findById } = require('../../lib/notes');
 const { notes } = require('../../db/notes');
 const { uuid } = require('uuidv4');
 const router = require("express").Router();
+const fs = require("fs");
+const path = require("path");
 
 
 router.get('/notes', (req, res) => {
@@ -28,15 +30,26 @@ router.post('/notes', (req, res) => {
 });
 
 router.delete('/notes/:id', (req, res) => {
-    const result = findById(req.params.id, notes);
-    if (result) {
-        console.log(result)
-        removeItemOnce(notes, result)
-        // res.json(result);
-    } else {
-        console.log("not working")
-        // res.send(404);
+    let jsonFilePath = path.join(__dirname, "../../db/notes.json");
+    // request to delete note by id.
+    for (let i = 0; i < notes.length; i++) {
+
+        if (notes[i].id == req.params.id) {
+            // Splice takes i position, and then deletes the 1 note.
+            notes.splice(i, 1);
+            break;
+        }
     }
+    // Write the db.json file again.
+    fs.writeFileSync(jsonFilePath, JSON.stringify(notes), function (err) {
+
+        if (err) {
+            return console.log(err);
+        } else {
+            console.log("Your note was deleted!");
+        }
+    });
+    res.json(notes);
 });
 
 module.exports = router;
