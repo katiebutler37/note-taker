@@ -1,4 +1,4 @@
-const { createNewNote, validateNote } = require('../../lib/notes');
+const { createNewNote, validateNote, findById, removeItemOnce } = require('../../lib/notes');
 const { notes } = require('../../db/notes');
 const { uuid } = require('uuidv4');
 const router = require("express").Router();
@@ -24,6 +24,18 @@ router.post('/notes', (req, res) => {
     } else {
         const note = createNewNote(req.body, notes);
         res.json(note);
+    }
+});
+
+router.delete('/notes/:id', (req, res) => {
+    const result = findById(req.params.id, notes);
+    if (result) {
+        console.log(result)
+        removeItemOnce(notes, result)
+        // res.json(result);
+    } else {
+        console.log("not working")
+        // res.send(404);
     }
 });
 
