@@ -1,5 +1,4 @@
-const fs = require('fs');
-const path = require('path');
+//module packages required
 const express = require('express');
 const apiRoutes = require('./routes/apiRoutes/notes.js');
 const htmlRoutes = require('./routes/htmlRoutes');

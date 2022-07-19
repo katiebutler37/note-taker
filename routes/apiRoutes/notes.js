@@ -1,5 +1,7 @@
-const { createNewNote, validateNote, findById } = require('../../lib/notes');
+//module packages and files required
+const { createNewNote, validateNote } = require('../../lib/notes');
 const { notes } = require('../../db/notes');
+//npm package for generating a unqiue ID
 const { uuid } = require('uuidv4');
 const router = require("express").Router();
 const fs = require("fs");
@@ -7,7 +9,6 @@ const path = require("path");
 
 
 router.get('/notes', (req, res) => {
-// notes.getNotes()
     const result = notes;
     if (result) {
         res.json(result);
@@ -17,7 +18,7 @@ router.get('/notes', (req, res) => {
 });
 
 router.post('/notes', (req, res) => {
-    // set id based on what the next index of the array will be
+    // set randomized unique id, then change to string for json
     req.body.id = uuid().toString();
 
     // if any data in req.body is incorrect, send 400 error back
