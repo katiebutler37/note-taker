@@ -6,8 +6,7 @@
   3. [Usage](#usage)
   4. [License](#license)
   5. [Contributing](#contributing)
-  6. [Tests](#tests)
-  7. [Questions](#questions)
+  6. [Questions](#questions)
    
 ## Description
 - The motivation for creating this repository was to small business owners to write and save notes to a server from a user friendly platform.
@@ -22,12 +21,13 @@ To install the project repository, please follow these steps:
 
 ## Usage
 To get started using Note Taker...
-1. Navigate to this link (heroku deployed site).
+1. Navigate to the deployed application using this link: [Note Taker](https://note-taker-2-point-0.herokuapp.com/).
 2. Click on Get Started.
 3. You may now add, save and delete your notes as you see fit.
 
-![Screenshot of deployed application](./images/)
+![Note Taker Landing Page](./public/assets/images/home-page.png/)
 
+![Note Taker Notes Page](./public/assets/images/notes-page.png/)
 
 ## License
 This project is not licensed.
@@ -39,14 +39,6 @@ If you would like to this repository, please first discuss the change you wish t
   ### Pull Request Process
   - Pull requests will be merged upon approval of the repository owner.
 
-## Tests
--if test is added
-Run the following command in terminal to test the functionality of this application:
-
-```sh 
-npm run test
-```
- 
 ## Questions
 If you have any questions about this project repository, please feel free to contact its owner.
   #### GitHub: [katiebutler37](https://github.com/katiebutler37)
